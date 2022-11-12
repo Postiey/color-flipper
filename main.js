@@ -7,11 +7,15 @@ const changeBackground = document.body;
 startup();
 
 btn.addEventListener('click', e => {
+    addColor();
+});
+
+function addColor() {
     let newColor = `${generateHex()}`
     
     changeBackground.style.backgroundColor = newColor;
     color_text.textContent = `${newColor};`
-});
+}
 
 function startup() {
     if (changeBackground.style.backgroundColor == '') {
@@ -30,12 +34,14 @@ function generateHex() {
         randomHex = Math.floor(Math.random() * newArray.length)
         value += newArray[randomHex];
     }
-
     return value;
-    
 }
 
-
+window.addEventListener('keypress', e => {
+    if (e.key == ' ' || e.key == "Space") {
+        addColor();
+    }
+})
 
 
 
